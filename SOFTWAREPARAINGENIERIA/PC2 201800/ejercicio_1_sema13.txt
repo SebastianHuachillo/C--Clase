@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+
+string generaClave(string str);
+
+int main()
+{
+	string cad;
+	do{
+		cout<<"Ingrese una cadena de vocales: "; getline(cin,cad);		
+		
+		if(cad.length()>15){
+			cout<<"Error, escriba otra cadena\n "<<endl;
+		}
+	}while(cad.length()>15);
+	
+	cout<<"\nLa clave formada es: "<<generaClave(cad);
+	
+	return 0;
+}
+
+string generaClave(string str){
+	string sum="";
+	
+	for(int i=0; i<str.length(); i++){
+		switch(toupper(str[i])){
+			case 'A': sum+=" *- "; break;
+			case 'E': sum+=" *-* "; break;
+			case 'I': sum+=" **-* "; break;
+			case 'O': sum+=" *-** "; break;
+			case 'U': sum+=" **-- "; break;
+		}		
+	}
+	
+	return sum;
+}
+
+///////////////////////////////////////////////////////////////
+TOME EL EJEMPLO QUE HIZO EL PROFE EN LA SEMANA 9 CREO, QUE ES EL SIGUIENTE:
+
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+	string txt;
+	int vocal_count = 0;
+	
+	cout << "Ingrese un texto: ";
+	getline(cin, txt);
+	
+	for (int i=0; i < txt.length(); i++){
+		switch(toupper(txt[i])) {
+			case 'A':
+			case 'E':
+			case 'I':
+			case 'O':
+			case 'U':
+				vocal_count++;
+				cout << vocal_count << ": " << txt[i] << endl;
+		}
+	}
+	
+	cout << "\nNumero de vocales: " << vocal_count << endl;
+	
+	return 0;
+}

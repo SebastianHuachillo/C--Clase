@@ -1,0 +1,190 @@
+//PROBLEMA 1:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //variable
+    int numero;
+	
+    //lectura del numero
+    cout<<"Ingrese un numero: ";
+    cin>>numero;
+	
+    cout<<endl<<"El numero es multiplo de 5 y de 7 pero no de 70: ";
+	
+    if(numero%5==0 && numero%7==0 && numero%70!=0)  //si numero es multiplo de 5 y de 7                                                     //pero no de 70
+    {
+       cout<<"Verdadero";
+    }  
+    else
+    {
+       cout<<"Falso";
+    }
+    cout<<endl;
+	
+	return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//PROBLEMA 2:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //variables
+    int N, num, den;  float  suma;
+    
+    //lectura y validacion
+    do{
+      cout<<"Ingrese el numero de terminos: ";
+      cin>>N;
+      if(N<=0)  cout<<"Error, volver a ingresar\n";
+    }while(N<=0);
+    
+    num = 3;   den = 5, suma = 0;  //valores iniciales
+    
+    cout<<endl;
+    for(int i=1;i<=N;i++)   //para i->1,2,3,4,........N
+    {
+    	cout<<num<<"/"<<den<<", ";  //se imprime la serie
+    	suma = suma + num*1.0/den;  //se acumula la suma de las fracciones
+    	num = num + 2;  den = den + 3;  //actualizacion
+    }
+	
+    //eliminando la ultima ,
+    cout<<"\b\b"<<" ";
+	
+    //salida:
+    cout<<endl<<endl<<"La suma de los terminos es: "<<suma;
+    
+	return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+//PROBLEMA 3:
+//==========
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <windows.h>
+
+using namespace std;
+
+int main()
+{
+    srand(time(NULL)); //activa semilla
+    
+    int d1, d2, p; //variables
+    
+    while(1) //lazo infinito
+    {
+
+        //adicional al problema (uso del switch-case)
+        //////////////////////////////////////////////////
+        p = rand()%(3+1);
+  	switch(p)
+  	{	  
+  	   case 0: system("color F4");
+  	   break;
+  	   case 1: system("color F6");
+  	   break;
+	   case 2: system("color 1F");
+  	   break;
+  	   default:
+  	   system("color 26");
+        }
+        //////////////////////////////////////////////////
+
+    	//se generan los resultados de ambos dados
+    	d1 = rand()%(6-1+1)+1;
+    	d2 = rand()%(6-1+1)+1;
+    	
+    	//se muestran los resulados
+    	cout<<endl<<d1<<""<<d2<<endl;
+    	
+    	//en caso ambos dados logren 6, salir del while
+    	if(d1==6 && d2==6)  break;
+    }
+       
+	return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+//PROBLEMA 4:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num, den, menor;
+    
+    cout<<"Ingrese el numerador y denominador de la fraccion: ";
+    cin>>num>>den;
+    
+    cout<<endl<<"Fraccion original: "<<num<<"/"<<den;
+    
+    menor = min(num,den);
+    
+    //proceso de simplifacion:
+    
+    for(int i=2;i<=menor;i++)  //para i->2,3,4,5....menor
+    {   
+      while(num%i==0 && den%i==0)  //mientras numerador y denominador sean multiplos de i   
+      {                           
+         num = num/i;  den = den/i;	
+      } 
+	  menor = min(num,den); //actualiza menor  
+    }
+    
+    cout<<endl<<endl<<"Fraccion simplificada: "<<num<<"/"<<den;
+        
+    return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//OPCIONAL:
+//Determinar la suma de cifras de un número:
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num, suma=0, r;
+    
+    cout<<"Ingrese un numero: ";
+    cin>>num;
+    
+    while(num>0)  //mientras num sea mayor a 0
+    {
+       r = num%10; //calcular residuo de dividir num entre 10
+
+       suma = suma + r;  //acumula suma 
+
+       num = num/10; //actualiza num
+
+    }   
+
+    cout<<endl<<endl<<"La suma de dígitos es: "<<suma;
+
+        
+    return 0;
+}
+
+
+

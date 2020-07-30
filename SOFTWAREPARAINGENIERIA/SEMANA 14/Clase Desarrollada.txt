@@ -1,0 +1,177 @@
+//PROGRAMA: CUADRADO CRECIENTE:
+//============================
+
+#include  "miniwin.h"
+#include  <cmath>
+
+using namespace miniwin;
+using namespace std;
+
+void cuadradoCreciente(int a)
+{
+	int aux;
+	color(3);	
+	for(int lado=a;lado<=800;lado+=1)
+	{
+	   aux = (800-lado)/2;   
+	   rectangulo_lleno(aux,aux, aux+lado, aux+lado);
+	   refresca();
+	   espera(10);
+    }
+}
+
+int  main()
+{
+	vredimensiona(800,800);
+	color(7);
+	cuadradoCreciente(10);
+	
+	
+        refresca();
+	return 0;
+}
+////////////////////////////////////////////////////////////////////
+//PROGRAMA: MOVIMIENTO DE UN OBJETO CON LAS FLECHAS DEL TECLADO:
+//=============================================================
+
+#include  "miniwin.h"
+
+using namespace miniwin;
+using namespace std;
+
+int  main()
+{
+    vredimensiona(800,800);
+    
+    float x=10,y=100;
+    
+    circulo_lleno(x,y,10);
+	  
+    while(1)  //while infinito
+    {
+       switch(tecla())
+	   {
+	   	  case ARRIBA:
+	   	  	if(y>10)
+	   	  	{
+	   	  	   y-=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	
+	   	  case ABAJO:
+	   	  	if(y<790)
+	   	  	{
+	   	  	   y+=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	  
+	   	  case IZQUIERDA:
+	   	  	if(x>10)
+	   	  	{
+	   	  	   x-=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  	
+	   	  break;
+	   	  
+	   	  case DERECHA:
+	   	  	if(x<790)
+	   	  	{
+	   	  	   x+=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	
+	   }	   
+	   refresca();		
+	   espera(10);
+	}
+        
+	return 0;
+}
+/////////////////////////////////////////////////////////////////////////
+
+//PROGRAMA: MOVIMIENTO DE UN OBJETO CON LAS FLECHAS DEL TECLADO:
+//=============================================================
+
+#include  "miniwin.h"
+
+using namespace miniwin;
+using namespace std;
+
+int  main()
+{
+    vredimensiona(800,800);
+    
+    float x=400,y=400;
+    
+    circulo_lleno(x,y,10); //circulo inicial en el medio 
+	  
+    while(1)  //while infinito
+    {
+       switch(tecla())  //se detecta la tecla
+	   {
+	   	  case ARRIBA:  //si se presiono la flecha arriba  
+	   	  	//si el objeto esta en el limite de la parte superior de la ventana,
+	   	  	//no deberia poder moverse arriba
+			if(y>10)  
+	   	  	{
+	   	  	   y-=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	
+	   	  case ABAJO:  //si se presiono la flecha abajo
+	   	    //si el objeto esta en el limite de la parte inferior de la ventana,
+	   	  	//no deberia poder moverse abajo
+	   	  	if(y<790)
+	   	  	{
+	   	  	   y+=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	  
+	   	  case IZQUIERDA:  //si se presiono la flecha izquierda
+	   	    //si el objeto esta en el limite de la parte izquierda de la ventana,
+	   	  	//no deberia poder moverse a la izquierda
+	   	  	if(x>10)
+	   	  	{
+	   	  	   x-=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  	
+	   	  break;
+	   	  
+	   	  case DERECHA: //si se presiono la flecha derecha
+	   	    //si el objeto esta en el limite de la parte derecha de la ventana,
+	   	  	//no deberia poder moverse a la derecha
+	   	  	if(x<790)
+	   	  	{
+	   	  	   x+=10;
+	   	  	   borra();
+			   circulo_lleno(x,y,10);
+	   	    }
+	   	  
+	   	  break;
+	   	
+	   }	   
+	   refresca();		
+	   espera(10);
+	}
+        
+	return 0;
+}

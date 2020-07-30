@@ -1,0 +1,72 @@
+#include "miniwin.h"
+#include<iostream>
+using namespace miniwin;
+using namespace std;
+const int N=50,M=50,tam=10;
+bool tablero[N][M];
+const int ANCHO=N*tam;
+const int ALTO=(M*tam)+40;
+float x,y;
+void muestra_tablero();
+int main()
+{
+	for(int i=0;i<=N;i++)
+	{
+		for(int j=0;j<=M;j++)
+		{
+			tablero[i][j]=false;
+		}
+	}
+	vredimensiona(ANCHO,ALTO);
+	muestra_tablero();
+	while(1)
+	{
+		if(raton_boton_izq()==true)
+		{
+			x = raton_x()-((int)raton_x()%10);
+			y = raton_y()-((int)raton_y()%10);
+			if(x<=490&&y<=490)
+			{
+				color(ROJO);
+			rectangulo_lleno(x,y,x+tam,y+tam);
+			espera(200);
+			refresca();
+			   	
+			}
+			
+		}		
+	}
+	
+			
+	return 0;
+	
+}
+void muestra_tablero()
+{
+	//Muestra el estado del tablero del juego en funcion
+	color_rgb(50,55,100);
+	for(int i=0;i<=ALTO;i+=tam)
+	{		
+		for(int j=0;j<=ANCHO;j+=tam)
+		{		
+			linea(i,0,i,ANCHO);
+			linea(0,j,ALTO-40,j);					
+		}
+	}
+	color(BLANCO);
+	texto(110,510,"Presione cualquier cuadrado con el ratón");
+	refresca();
+	color(ROJO);	
+	for(int i=0;i <50;i++)
+	{
+		for(int j=0;j<50;j++)
+		{				
+			if(tablero[i][j]==true)
+			{
+				rectangulo_lleno(i*10,j*10,i*10+tam,j*10+tam);
+			}
+		}
+		refresca();	
+	}
+
+}

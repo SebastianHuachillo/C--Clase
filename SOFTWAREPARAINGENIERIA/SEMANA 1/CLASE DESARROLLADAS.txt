@@ -1,0 +1,73 @@
+//programa1:
+//=========
+
+#include <iostream> //se incluye la libreria iostream
+#include <cmath> //se incluye para usar funciones matematicas
+#include <iomanip> //para usar redondeo
+#include <conio.h> //para usar la funcion getch()
+
+using namespace std; //usar el espacio de nombres estandar
+
+int main()  //funcion principal (siempre debe estar)
+{
+  //crear las variables a utilizar:
+  float a,b,c,disc,x1,x2;
+  
+  //leer datos de entrada:
+  cout<<"Ingrese los 3 coeficientes: ";	
+  cin>>a>>b>>c;
+  
+  cout<<"\nEcuacion cuadratica: \n";             
+  cout<<a<<"x^2 + "<<b<<"x + "<<c<<" = 0";
+	
+  //calcular discriminante:
+  disc = pow(b,2)- 4*a*c;
+  
+  //calcular las raices de la ecuacion:
+  x1 = (-b + sqrt(disc))/(2*a);
+  x2 = (-b - sqrt(disc))/(2*a);
+  
+  //mostrar las raices resultantes:
+  cout<<fixed<<setprecision(3);
+  cout<<"\n\nRaices de la ecuacion: \n";
+  cout<<"Raiz 1:"<<x1<<"\n";
+  cout<<"Raiz 2:"<<x2<<"\n";
+	
+  getch(); //detiene el programa hasta presionar una tecla
+  return 0; //se retorna un valor entero al SO	
+}
+
+
+///////////////////////////////////////////////////////////
+//TIPS:
+
+#include <iostream> 
+#include <cmath> 
+
+using namespace std; //usar el espacio de nombres estandar
+
+int main()  //funcion principal (siempre debe estar)
+{
+  //tips importantes:
+  int num1=10, num2=7; //inicializar variables.
+  
+  cout<<num1<<"/"<<num2<<" es: "<<num1*1.0/num2;
+  
+  cout<<"\nraiz cubica de 8 es: "<<pow(8,1.0/3);
+  
+  //otra forma de corregir una division de enteros:
+  //casting de tipo o typecast
+  cout<<"\n"<<num1<<"/"<<num2<<" es: "<<(float)num1/num2;
+  
+  //imprimir caracteres especiales:
+  cout<<"\nn"<<(char)163<<"mero";
+  cout<<"\na"<<(char)164<<"os";
+  
+  //otra forma de imprimir salto de linea:
+  cout<<endl<<"Hola Mundo"<<endl<<endl<<endl<<"soy C++";
+
+  //calcular residuo en C++:
+  cout<<"El residuo de dividir 10 entre 3 es: "<<10%3;
+  
+  return 0; 	
+}

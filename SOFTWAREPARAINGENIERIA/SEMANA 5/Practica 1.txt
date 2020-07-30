@@ -1,0 +1,126 @@
+//PROBLEMA 1:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	//variables a utilizar
+    int aporte1, aporte2;
+    float dolares;
+    
+    //lectura de datos:
+    cout<<"Ingrese aporte del socio 1 (soles): ";
+    cin>>aporte1;
+    cout<<"Ingrese aporte del socio 1 (soles): ";
+    cin>>aporte2;
+    
+    //calcula y muestra la recaudacion total en dolares
+    dolares = aporte1/3.45 +  aporte2/3.45;
+    cout<<endl<<"Total recaudado en dolares: "<<dolares;
+    
+    //evalua condicion:
+    if(dolares>=3000)
+      cout<<endl<<"\nYa se puede empezar el negocio";
+    else
+      cout<<endl<<"\nAun no se puede empezar el negocio";
+    
+
+	return 0;
+}
+////////////////////////////////////////////////////////////
+
+//PROBLEMA 2:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	//varianles
+	int num1, num2;
+	
+	//lectura y validacion con do-while
+	do{
+	 cout<<"Ingrese dos numeros: "; cin>>num1>>num2;
+	 
+	 if(num1<-10 || num1>10 || num2<-10 || num2>10)
+	   cout<<endl<<"Error, lectura de datos incorrecta, ingrese nuevamente\n\n";
+    }while(num1<-10 || num1>10 || num2<-10 || num2>10);
+    
+    cout<<endl<<"Lectura correcta";
+		
+	return 0;
+}
+
+/////////////////////////////////////////////////////////////
+
+//PROBLEMA 3:
+//==========
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	//variables
+    int N, aux=1, suma=0;
+    
+    //lectura de N:
+    cout<<"Ingrese la cantidad de terminos: ";  cin>>N;
+    
+    cout<<endl<<"Serie formada: "<<endl;
+    
+    for(int i=1;i<=N;i++)   //para i=1,2,3,4,5....N
+    {
+    	cout<<i*aux<<" ";  //imprime cada termino 
+    	suma = suma + i*aux;  //acumula la suma
+    	aux = -aux;  //actualiza aux para volver negativo al siguiente termino
+	}
+    
+    //se muestra la suma total:
+    cout<<endl<<endl<<"La suma de la serie es: "<<suma;
+    
+   		
+	return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////
+//PROBLEMA 4:
+//==========
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	srand(time(NULL)); //activa semilla
+	
+	//variables:
+	int tam;
+	
+	while(1)  //lazo infinito
+	{
+		tam = rand()%(70-10+1)+10; //tamaño de linea aleatorio
+		
+		//imprime cada linea
+		for(int i=1;i<=tam;i++){  //para i=1,2,3,.....tam
+		   cout<<"|";
+	    }
+	    cout<<endl; //Para imprimir la siguiente linea debajo
+	    
+	    if(tam==20)  break; //si eñ tamaño de la linea fue 10 sale del
+		                    //lazo infinito
+	}
+       		
+	return 0;
+}
+
+

@@ -1,0 +1,415 @@
+//Impresión de la serie: 1, 2, 3, 4, 5........,N 
+//usando while
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int N,i; //variables
+   
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+   i = 1;  //instruccion de inicio
+   
+   while(i<=N)  //mientras i sea menor o igual a N
+   {
+   	 cout<<i<<", ";
+   	 
+   	 i = i+1; //actualiza i
+   }
+   
+   //eliminar la última ,
+   cout<<"\b\b"<<" ";
+   	
+   return 0;
+}
+//////////////////////////////////////////////////////////
+
+//Impresión de la serie: 1, 2, 3, 4, 5........,N 
+//usando for
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int N; //variables
+   
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+   //para i->1,2,3,4,5......N
+   for(int i=1;i<=N;i=i+1)
+   {
+   	 cout<<i<<", ";
+   }
+   
+   //eliminar la última ,
+   cout<<"\b\b"<<" ";
+
+   return 0;
+}
+   
+/////////////////////////////////////////////////////////////////
+//Impresión de los primeros N pares:  0 2 4 6 8 .........?
+//usando while (tambien se podria usar for)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int N,i=0; //variables
+   
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+  while(i<2*N) //mientras i sea menor a 2*N
+  {
+  	cout<<i<<" ";
+  	i = i+2;
+  }	
+   return 0;
+}
+//////////////////////////////////////////////////////////////////
+
+//Impresión de los primeros N pares:  0 2 4 6 8 .........?
+//otra forma (usando dos variables en el while)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int N,i=1,x=0; //variables
+   
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+  while(i<=N)  //mientras i sea menor N
+  {
+  	cout<<x<<" ";
+  	i = i+1;  //se actualiza i
+  	x = x +2; //se actualiza x
+  }
+  	
+   return 0;
+}
+////////////////////////////////////////////////////////////////////
+
+//Impresión de los primeros N pares:  0 2 4 6 8 .........?
+//otra forma (usando dos variables en el for)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int N,x=0; //variables
+   
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+  //para i->1,2,3,4,.......N
+  for(int i=1;i<=N;i++) 
+  {
+  	cout<<x<<" ";
+  	x = x +2; //se actualiza x
+  }
+
+///////////////////////////////////////////////////////////////////////
+
+//TIP:
+//Ojo con la forma de crear la variable de inicio de un for:
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   //para i->1,2,3,4,5......10
+   for(int i=1;i<=10;i=i+1)
+   {
+   	 cout<<i<<", ";
+   }
+   
+   //cout<<endl<<"El valor final de i es: "<<i;
+   //en la instruccionde arriba saldria error ya que la vble. i creada en el for se "destruye" una vez
+   //que el for termina su iteracion
+
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+//TIP
+//Ojo con la forma de crear la variable de inicio de un for:
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   int i; //la variable de incio se crea fuera del for
+
+   //para i->1,2,3,4,5......10
+   for(i=1;i<=10;i=i+1)
+   {
+   	 cout<<i<<", ";
+   }
+   
+   cout<<endl<<"El valor final de i es: "<<i;
+   //en la instruccionde arriba ya no saldria error ya que la vble. i fue creada fuera del for
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//TIP
+//uso del break para salir de un lazo:
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   int i=1; 
+
+   while(1)  //lazo infinito
+   {
+     cout<<i<<endl;
+     i++;
+      
+     if(i<0)
+        break;  //sale del lazo antes de tiempo.
+
+   }
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//Como generar un valor aleatorio en C++
+
+#include <iostream>
+#include <ctime> //para usar la funcion time
+#include <cstdlib> //para usar rand
+
+using namespace std;
+
+int main()
+{
+   srand(time(NULL)); //activar la semilla de aleatorios	
+	
+   int x;
+   
+   x = rand()%(10+1);  //genera un aleatorio en [0,10]
+  
+   cout<<x;
+	
+   return 0;
+}
+///////////////////////////////////////////////////////////////////////////////
+
+//Como generar un valor aleatorio en C++
+#include <iostream>
+#include <ctime> //para usar la funcion time
+#include <cstdlib> //para usar rand
+
+using namespace std;
+
+int main()
+{
+   srand(time(NULL)); //activar la semilla de aleatorios	
+	
+   int dado;
+   
+   dado = rand()%(6-1+1) + 1;  //genera un aleatorio en [1,6]
+  
+   cout<<dado;
+	
+   return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+//generando N aleatorios de 3 cifras y mostrar su suma total
+//usando for (tambien se puede usar while)
+#include <iostream>
+#include <ctime> //para usar la funcion time
+#include <cstdlib> //para usar rand
+
+using namespace std;
+
+int main()
+{
+    srand(time(NULL)); //activar la semilla de aleatorios	
+
+   //variables:
+   int N,x, i;
+   double suma=0;  //se usa double para que la suma pueda tomar valores muy grandes
+
+   //lectura:
+   cout<<"Ingrese el valor de N: ";
+   cin>>N;
+   
+   //para i->1,2,3,4,.....N
+   for(int i=1;i<=N;i++)   //se puede usar abreviatura i++  en lugar de colocar  i = i + 1
+   {   	  
+         //srand(time(NULL));  //no colocar la activacion de la semilla dentro de un lazo   
+      
+   	  x = rand()%(999-100+1) + 100;  //se genera un aleatorio de 3 cifras y se asigna a x
+   	  
+   	  cout<<x<<endl;  //se muestra el valor generado
+   	  
+   	  suma = suma + x; //actualizar suma (suma es un acumulador)
+   }
+   
+  //salida
+   cout<<endl<<"la suma es: "<<suma;
+    
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//usando el do while para validar ingreso de datos:
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    
+   //se validara que el valor ingresado por el usario no sea negativo
+    do{
+      cout<<"Ingrese un valor positivo:";
+      cin>>x;
+    
+      if(x<0)
+      {
+      cout<<endl<<"Volver a ingresar!\n";
+	  }
+   }while(x<0); //mientras x sea menor a cero 
+   
+   cout<<"Ingreso correcto!!";
+       
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+////usando el do while para validar ingreso de datos:
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    
+    //se validara que el valor ingresado por el usario no sea impar
+    do{
+      cout<<"Ingrese un valor par:";
+      cin>>x;
+    
+      if(x%2!=0) //si el residuo de divividir x con 2 es 
+      {          //diferente de 0
+      
+      cout<<endl<<"Volver a ingresar!\n";
+	  }
+   }while(x%2!=0);
+   
+   cout<<"Ingreso correcto!!";
+       
+   return 0;
+}
+///////////////////////////////////////////////////////////////////////////////
+
+//cuidado con el lazo o bucle infinito
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int i=1;
+   
+   while(1) //bucle infinito
+   {
+   	  cout<<i<<endl;
+   	  i++;
+   }
+   
+   return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+//valor agregado al programa que resuelve la ecuacion cuadratica
+
+#include <iostream> //se incluye la libreria iostream
+#include <cmath> //se incluye para usar funciones matematicas
+#include <iomanip> //para usar redondeo
+#include <conio.h> //para usar la funcion getch()
+#include <windows.h> //
+
+using namespace std; //usar el espacio de nombres estandar
+
+int main()  //funcion principal (siempre debe estar)
+{
+  //crear las variables a utilizar:
+  float a,b,c,disc,x1,x2;
+  char x='S';
+  
+while(x=='S') //mientras el valor de x sea igual a 'S'
+{  
+  system("cls"); //limpiar pantalla
+  //leer datos de entrada:
+  cout<<"Ingrese los 3 coeficientes: ";	
+  cin>>a>>b>>c;
+  
+  cout<<"\nEcuacion cuadratica: \n";             
+  cout<<a<<"x^2 + "<<b<<"x + "<<c<<" = 0";
+	
+  //calcular discriminante:
+  disc = pow(b,2)- 4*a*c;
+  
+  if(disc<0)
+  {
+  	cout<<endl<<endl<<"NO hay solucion real!!";
+  }
+  else
+  {
+  	 //calcular las raices de la ecuacion:
+     x1 = (-b + sqrt(disc))/(2*a);
+     x2 = (-b - sqrt(disc))/(2*a);
+  
+     //mostrar las raices resultantes:
+     cout<<fixed<<setprecision(3);
+     cout<<"\n\nRaices de la ecuacion: \n";
+     cout<<"Raiz 1:"<<x1<<"\n";
+     cout<<"Raiz 2:"<<x2<<"\n";
+  }
+ 
+  //el usuario ingresa su respuesta
+  cout<<endl<<"Deseas continuar S/N: ";
+  cin>>x;
+}
+  getch(); //detiene el programa hasta presionar una tecla
+  return 0; //se retorna un valor entero al SO	
+}

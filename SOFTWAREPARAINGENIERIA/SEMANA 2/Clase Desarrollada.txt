@@ -1,0 +1,232 @@
+//Programa: Validacion del discriminante de la ecuacion cuadratica
+
+#include <iostream> //se incluye la libreria iostream
+#include <cmath> //se incluye para usar funciones matematicas
+#include <iomanip> //para usar redondeo
+#include <conio.h> //para usar la funcion getch()
+
+using namespace std; //usar el espacio de nombres estandar
+
+int main()  //funcion principal (siempre debe estar)
+{
+  //crear las variables a utilizar:
+  float a,b,c,disc,x1,x2;
+  
+  //leer datos de entrada:
+  cout<<"Ingrese los 3 coeficientes: ";	
+  cin>>a>>b>>c;
+  
+  cout<<"\nEcuacion cuadratica: \n";             
+  cout<<a<<"x^2 + "<<b<<"x + "<<c<<" = 0";
+	
+  //calcular discriminante:
+  disc = pow(b,2)- 4*a*c;
+  
+  if(disc<0)
+  {
+  	cout<<endl<<endl<<"NO hay solucion real!!";
+  }
+  else
+  {
+  	 //calcular las raices de la ecuacion:
+     x1 = (-b + sqrt(disc))/(2*a);
+     x2 = (-b - sqrt(disc))/(2*a);
+  
+     //mostrar las raices resultantes:
+     cout<<fixed<<setprecision(3);
+     cout<<"\n\nRaices de la ecuacion: \n";
+     cout<<"Raiz 1:"<<x1<<"\n";
+     cout<<"Raiz 2:"<<x2<<"\n";
+  }
+ 
+	
+  getch(); //detiene el programa hasta presionar una tecla
+  return 0; //se retorna un valor entero al SO	
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+//Programa:  Validación del ingreso de una nota
+
+#include <iostream> 
+
+using namespace std; 
+
+int main()  
+{
+  //variable:
+  int nota;
+  
+  //lectura de la nota:
+  cout<<"Ingrese la nota del alumno: ";
+  cin>>nota;
+  
+  //determinar si la nota es correcta o no:
+  if(nota>=0)  //si la nota es mayor o igual a cero
+  {
+  	if(nota<=20) //si la nota es menor o igual a 20
+  	{
+  	  cout<<"Nota correcta";	
+	}
+	else //sino
+	{
+	  cout<<"Nota incorrecta";
+	}
+  }
+  else //sino
+  {
+  	cout<<"Nota incorrecta";
+  }
+    
+  return 0; 
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+//Programa: Validación del ingreso de una nota (usando operador logico)
+
+#include <iostream> 
+
+using namespace std; 
+
+int main()  
+{
+  //variable:
+  int nota;
+  
+  //lectura de la nota:
+  cout<<"Ingrese la nota del alumno: ";
+  cin>>nota;
+  
+  //determinar si la nota es correcta o no:
+  if(nota>=0 && nota<=20)  //si la nota es mayor o igual a cero Y menor o igual a 20
+  {	
+  	cout<<"Nota correcta";	
+  }
+  else //sino
+  {
+  	cout<<"Nota incorrecta";
+  }
+    
+  return 0; 
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//Programa: Determinar si un caracter es minúscula, mayúscula o no es una letra
+
+#include <iostream>
+#include <cmath>  
+
+using namespace std; 
+
+int main()  
+{
+   //variables
+   char caracter;
+   
+   //lectura de datos:
+   cout<<"Ingrese un caracter: ";
+   cin>>caracter;
+   
+   //proceso:
+   //evaluar el caracter:
+   if(caracter>='a' && caracter<='z')  //si el caracter esta entre la 'a' y la 'z'
+   {
+   	   cout<<"\nEs una letra minuscula";
+   }
+   else if(caracter>='A' && caracter<='Z')  //si el caracter esta entre la 'A' y la 'Z'
+   {
+   	   cout<<"\nEs una letra mayuscula";
+   }
+   else
+   {
+       cout<<"\nNo es una letra"; 	
+   }
+
+  return 0; 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+//Programa:  Determinar el estado de peso de una persona en base a su IMC
+
+#include <iostream>
+#include <cmath>  
+
+using namespace std; 
+
+int main()  
+{
+   //variables
+   double peso, talla, imc;
+   
+   //lectura de datos:
+   cout<<"Ingrese su peso (Kg.): ";
+   cin>>peso;
+   cout<<"Ingrese su talla (mt.): ";
+   cin>>talla;
+   
+   //proceso:
+   imc =  peso/pow(talla,2);  //calcula IMC
+   
+   //determina estado:
+   if(imc<18.5)
+   {
+   	   cout<<"\nUd. esta bajo de peso";
+   }
+   else if(imc<=25)
+   {
+   	   cout<<"\nSu estado de peso es normal";
+   }
+   else
+   {
+       cout<<"\nUd. esta en sobrepeso"; 	
+   }
+
+  return 0; 
+}
+
+/////////////////////////////////////////////////////////////////////
+
+//TIPS:
+//=========
+#include <iostream> //se incluye la libreria iostream
+#include <cmath> //se incluye para usar funciones matematicas
+#include <iomanip> //para usar redondeo
+#include <conio.h> //para usar la funcion getch()
+#include <cmath> 
+
+using namespace std; //usar el espacio de nombres estandar
+
+int main()  //funcion principal (siempre debe estar)
+{
+  //tips:
+  int a=10, b=8;
+  
+  //imprimir resultado de expresiones logicas:
+  cout<<endl<<"La expresion es: "<<(a==b || a>b);
+  cout<<endl<<"La expresion es: "<<(a!=b && b<8);
+  
+  //estructura de decision simple:
+  if(a>b)
+  {
+  	cout<<"\nSe acerca la pc1!";
+  }
+    
+  //cuando uno o mas bloques tienen una sola instruccion
+  //no es necesario colocar llaves:
+  if(a>b)
+    cout<<"\nOpcion 1";
+  else
+    cout<<"\nOpcion 2"; 
+
+  //el valor de un caracter es un numero entero
+  cout<<endl<<"La expresion es: "<<('A'+ 1 == 'B');
+                                   //(65+1) == 66
+  
+  getch(); //detiene el programa hasta presionar una tecla
+  return 0; //se retorna un valor entero al SO	
+}
+
+

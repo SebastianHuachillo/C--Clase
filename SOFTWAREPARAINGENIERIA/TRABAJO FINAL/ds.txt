@@ -1,0 +1,117 @@
+#include "miniwin.h"
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace miniwin;
+using namespace std;
+
+void caratula()
+{
+   color(1);
+   for(int x=0; x<=700; x+=100)
+   {
+       rectangulo_lleno(x,700-x,800,800-x);	
+   } 
+   color(7);
+   texto(500,500,"SOFTWARE PARA INGENIERIA");
+   texto(500,520,"           UPC - 2017 - 02");
+   
+   texto(50,50,"Integrantes: ");
+   texto(50,70,"Gefferson Farfan ");
+   texto(50,90,"Renato Tapia ");
+   texto(50,110,"Paolo Guerrero ");
+}
+
+//grafica:
+void  graficaRectangulos(int arr[], int c)
+{
+	for(int i=0; i<20; i++)
+    {
+        color(7);
+        texto(i*40,800-arr[i]-15,"  " + to_string(arr[i]));
+        color(c);
+  	    rectangulo_lleno(i*40,800-arr[i],(i+1)*40,800);
+    }
+}
+
+void animacion()
+{
+	int x=0, var;
+	while(1)
+	{
+		color(7);  texto(x,50,"Arriba Peru");
+		refresca();
+		espera(5);
+		color(0);  texto(x,50,"Arriba Peru");
+		if(x==800-11*6)
+		  var=-1;
+		if(x==0)
+		  var=1;
+		x+=var;  
+	}
+}
+
+int main()
+{
+  srand(time(NULL));
+  
+  vredimensiona(800,800);
+  caratula();
+   
+  int aleatorios[20];
+  
+  while(1)
+  {
+  	 switch(tecla())
+  	 {
+  	 	case 'G':
+  	 		//poblado del arreglo:
+            for(int i=0;i<20;i++){
+  	          aleatorios[i] = rand()%(700-10+1)+10;
+            }
+  	 		borra();
+  	 		for(int i=0; i<20; i++) {
+               color(7);  texto(i*40,800-aleatorios[i]-15,"  " + to_string(aleatorios[i]));
+               color(7);  rectangulo_lleno(i*40,800-aleatorios[i],(i+1)*40,800);
+            }
+        break;
+  	 	
+  	    case ARRIBA:
+		    for(int i=0; i<20; i++) {
+               color(7);  texto(i*40,800-aleatorios[i]-15,"  " + to_string(aleatorios[i]));
+               color(1);  rectangulo_lleno(i*40,800-aleatorios[i],(i+1)*40,800);
+            }
+		break;
+		
+		case ABAJO:
+		    for(int i=0; i<20; i++) {
+               color(7);  texto(i*40,800-aleatorios[i]-15,"  " + to_string(aleatorios[i]));
+               color(2);  rectangulo_lleno(i*40,800-aleatorios[i],(i+1)*40,800);
+            }
+		break;
+			   	
+		case IZQUIERDA:
+		  for(int i=0; i<20; i++) {
+               color(7);  texto(i*40,800-aleatorios[i]-15,"  " + to_string(aleatorios[i]));
+               color(3);  rectangulo_lleno(i*40,800-aleatorios[i],(i+1)*40,800);
+            }
+		break;
+		
+		case DERECHA:
+		   for(int i=0; i<20; i++) {
+               color(7);  texto(i*40,800-aleatorios[i]-15,"  " + to_string(aleatorios[i]));
+               color(4);  rectangulo_lleno(i*40,800-aleatorios[i],(i+1)*40,800);
+            }
+		break;	
+		
+		case 'A':
+			animacion();
+		break;
+	 }
+  	  refresca();
+  	  espera(10);
+  }
+  
+  return 0;
+}

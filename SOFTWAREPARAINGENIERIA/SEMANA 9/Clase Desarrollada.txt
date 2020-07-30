@@ -1,0 +1,420 @@
+//cREANDO Y MANEJANDO CADENAS
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   
+   string cadena = "PERU"; //se ha creado una cadena
+                           //de nombre cadena
+                           
+   //mostrando la cadena:
+   cout<<"La cadena es: "<<cadena;
+   
+   //mostrando cada caracter de la cadena:
+   cout<<endl<<endl<<"Caracteres de la cadena: "<<endl;
+   cout<<cadena[0]<<endl;
+   cout<<cadena[1]<<endl;
+   cout<<cadena[2]<<endl;
+   cout<<cadena[3]<<endl;
+   
+   //cambiando un caracter de la cadena
+   cadena[0] = 'p';
+   cout<<"cadena cambiada es: "<<endl;
+   cout<<endl<<cadena;
+   	
+	
+   return 0;
+}
+
+////////////////////////////////////////////////////////
+//cREANDO Y MANEJANDO CADENAS 
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   //se ha creado una cadena de nombre cadena
+   string cadena = "PERU-3-COLOMBIA-0";
+   
+   int tam; 
+                           
+   //mostrando la cadena:
+   cout<<"La cadena es: "<<cadena;
+   
+   tam = cadena.length();
+   cout<<endl<<"tamano de la cadena: "<<tam;
+     
+   //mostrando cada caracter de la cadena:
+   cout<<endl<<"Cada caracter de la cadena: "<<endl;
+   
+   for(int i=0;i<tam;i++)
+   {
+   	  cout<<cadena[i]<<endl;
+   }
+   
+  	
+   return 0;
+}
+/////////////////////////////////////////////////////////
+//PROGRAMA:  Imprimir un cadena al reves:
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   string nombre;
+   
+   cout<<"Ingrese su nombre completo: ";
+   getline(cin,nombre);
+   
+   cout<<"Hola "<<nombre;
+   
+   cout<<endl<<"Tu nombre al reves es: ";
+   
+   for(int i=nombre.length()-1;i>=0;i--)
+   {
+   	  cout<<nombre[i];
+   }
+    	
+   return 0;
+}
+
+//////////////////////////////////////////////////////////
+//PROGRAMA: Contar vocales en una cadena
+
+#include <iostream>
+
+using namespace std;
+
+int cuentaVocales(string str)
+{
+   int cont=0;
+   
+   for(int i=0;i<str.length();i++)
+   {
+   	 if(str[i]=='a' || str[i]=='A')
+   	   cont++;
+   	 else if(str[i]=='e' || str[i]=='E')
+   	   cont++; 
+   	 else if(str[i]=='i' || str[i]=='I')
+   	   cont++; 
+   	 else if(str[i]=='O' || str[i]=='o')
+   	   cont++; 
+   	 else if(str[i]=='u' || str[i]=='U')
+   	   cont++; 
+   }
+   return cont;	
+}
+
+
+int main()
+{  
+   string frase;
+   
+   cout<<"Ingrese una frase: ";
+   getline(cin,frase);
+   
+   //la cantidad de vocales de la frase es:
+   cout<<cuentaVocales(frase);   
+   
+   return 0;
+}
+
+////////////////////////////////////////////////////////////
+
+//CONCATENANDO CADENAS:
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   string pais1,pais2,pais3,cadena;
+   
+   cout<<"Ingrese pais 1: ";  getline(cin,pais1);
+   cout<<"Ingrese pais 2: ";  getline(cin,pais2);
+   cout<<"Ingrese pais 3: ";  getline(cin,pais3);
+   
+   //concatenar (juntar) cadenas:
+   cadena = pais1 + "-" + pais2 + "-" + pais3;
+   
+   cout<<"\ncadena formada: "<<endl;
+   cout<<cadena;
+   
+   
+   
+   return 0;
+}
+
+///////////////////////////////////////////////////////////
+
+//PROGRAMA:  Generando una cadena aleatoria
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+string formarCadena(int n){
+	
+   int r;  char car;
+   string cad="";  //cadena vacia	
+	
+   for(int i=0;i<n;i++) //recorre cada caracter a formar
+   {
+   	  r = rand()%(3-1+1)+1; //se escoge el rango
+   	  
+   	  switch(r){
+   	    case 1: //elegir minuscula
+   	      car = rand()%('z'-'a'+1 )+ 'a';
+   	      cad = cad + car;	
+   	    break;
+		   
+		case 2: //elegir mayuscula
+		  car = rand()%('Z'-'A'+1 )+ 'A';
+		  cad = cad + car;
+	    break;
+		
+		case 3: //elegir caracter numerico
+			car = rand()%('9'-'0'+1 )+ '0';
+			cad = cad + car;
+		break;		  	 	  	
+	  }   	
+   }		
+   return  cad;  //retorna la cadena formada
+	
+}
+
+int main()
+{  
+   srand(time(NULL));
+   
+   int N;
+   
+   cout<<"Ingrese la cantidad de caracteres: ";  cin>>N;
+      
+   cout<<"Su clave es: "<<formarCadena(N);
+   
+   
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////
+
+//MANEJOD DE CADENAS:  USO DE LA FUNCION SUBSTR()
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   string cadena = "UPC-MONTERRICO";
+   string subCadena1,subCadena2;
+   
+   //extrae de cadena una subcadena de 5 caracteres empezando de la posicion 4
+   subCadena1 = cadena.substr(4,5); 
+   cout<<endl<<"SubCadena1 es: "<<subCadena1;
+   
+   //extrae de cadena una subcadena formada por todos los caracteres empezando de la posicion 1
+   subCadena2 = cadena.substr(1);
+   cout<<endl<<"SubCadena1 es: "<<subCadena2;
+   
+   cout<<endl<<cadena.substr(3,3);
+   
+   
+   
+   return 0;
+}
+
+////////////////////////////////////////////////////////////////////
+
+//PROGRAMA: Mostrar los 3 ultimos caracteres de una cadena
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{  
+   string cadena;
+   int tam;
+   
+   cout<<"Ingresa una cadena: "; getline(cin,cadena);
+   
+   tam= cadena.length();
+   
+   cout<<endl<<"Los 3 ultimos caracteres de la cadena es: ";
+   cout<<cadena.substr(tam-3);
+   
+   
+   return 0;
+}
+
+/////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Buscar una cadena en otra
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil-Uruguay-Peru-Colombia-Argentina";
+   
+   int ind;
+   
+   //busca una cadena en otra cadena
+   ind = cadena.find("Peru");
+   cout<<ind;
+   
+
+   return 0;
+}
+///////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Buscar una cadena en otra
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil-Uruguay-Peru-Colombia-Peru";
+   
+   int ind;
+   
+   //busca una cadena en otra cadena
+   ind = cadena.find("Peru");
+   cout<<ind;
+   
+   //hacemos otra busqueda:
+   ind = cadena.find("Peru",ind+1);  //busca la cadena Peru desde la poscion ind+1
+   cout<<endl<<ind;
+   
+
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Buscar una cadena en otra
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil-Uruguay-Peru-Colombia-Argentina";
+   
+   int ind;
+   
+   //busca una subcadena en otra cadena
+   ind = cadena.find("Chile");
+   cout<<ind;
+   
+   if(ind==-1)
+     cout<<endl<<"la busqueda no prospero";
+   
+   
+   return 0;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Insertar una cadena en otra
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil Uruguay";
+   
+   cout<<"Cadena original: "<<cadena;
+   
+   //inserta una cadena en otra:
+   cadena.insert(7,"Peru "); //Inserta la cadena "Peru " desde la posicion 7
+   
+   cout<<endl<<"Cadena resultante: "<<cadena;
+   
+    
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Insertar una cadena en otra
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil Uruguay";
+   
+   cout<<"Cadena original: "<<cadena;
+   
+   //inserta una cadena en otra:
+   cadena.insert(cadena.length()," Peru");  //Inserta la cadena " Peru" en la ultima posicion
+   
+   cout<<endl<<"Cadena resultante: "<<cadena;
+   
+   
+   
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+//MANEJO DE CADENAS:  Insertar una cadena en otra
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{  
+   string cadena =  "Brasil Uruguay";
+   
+   cout<<"Cadena original: "<<cadena;
+   
+   //inserta una cadena en otra:
+   cadena.insert(0,"Peru ");    //Inserta la cadena " Peru " en la primera posicion
+   
+   cout<<endl<<"Cadena resultante: "<<cadena;  
+   
+   return 0;
+}
+
+
+

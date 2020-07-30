@@ -1,0 +1,132 @@
+#include "miniwin.h"
+#include <string>
+#include <iostream>
+
+using namespace miniwin;
+using namespace std;
+
+const int tam=10;
+const int m=50;
+const int n=50;
+const int ANCHO=n*tam;
+const int ALTO=m*tam+40;
+ 
+bool tablero[n][m];
+bool temp[n][m];
+int cuenta_vivos(int,int);
+
+void muestraTablero();
+
+int main(){
+    vredimensiona(ANCHO, ALTO);
+
+    int xpos, ypos;
+    bool vida[n][m];
+
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++) {
+            tablero[i][j]=false;
+        }
+    }
+    
+    muestraTablero();
+
+    do{
+        if(raton_boton_izq()==true){
+            xpos=raton_x()-((int)raton_x()%10);
+            ypos=raton_y()-((int)raton_y()%10);
+
+				tablero[xpos/10][ypos/10] = true;
+                           
+            color(NEGRO);
+            rectangulo_lleno(50,520,ANCHO,ALTO);
+            color(BLANCO);
+            texto(50, 520, "Coordenada: " + to_string(xpos/10) +", "+ to_string(ypos/10));
+
+            espera(100);
+            muestraTablero();
+            refresca();
+        }
+    } while (tecla() != RETURN);
+    
+    for(int i=0; i<n; i++){
+        	for(int j=0; j<m; j++){
+        		temp[i][j]=tablero[i][j];
+			}
+	}
+
+    while(1){
+		// Barre todos los elementos de tablero
+		for(int i=1; i<(n-1); i++){
+        	for(int j=1; j<(m-1); j++){
+        		// Evalua el estado de los cursores en funcion
+				// de las reglas del juego y el nuevo estado lo
+				// copia en el arreglo temp
+        		if(temp[i][j]==true){
+					if(cuenta_vivos(i,j)!=3 && cuenta_vivos(i,j)!=2){
+						temp[i][j]=false;
+					}			
+				}
+                
+                else if(temp[i][j]==false){
+                	if(cuenta_vivos(i,j)==3){
+                		temp[i][j]=true;
+					}
+                                 
+            	}  	
+        	} 	
+    	}
+		// Se traslada los valores de temp a tablero
+		
+		for(int i=0; i<n; i++){
+        	for(int j=0; j<m; j++){
+        		tablero[i][j]=temp[i][j];
+        		
+				}}
+		// Se muestra el tablero
+		muestraTablero();
+		refresca();
+		espera(250);
+		
+	}
+        
+    return 0;
+}
+
+void muestraTablero(){
+	color(BLANCO);
+    for(int x=tam; x<ANCHO; x+=tam){
+        linea(x, 0, x, ALTO-40);
+    }
+    for(int y=tam; y<=ALTO-40; y+=tam){
+        linea(0, y, ANCHO, y);
+    }
+
+	 for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++) {
+            if (tablero[i][j]) {
+            	color(5);
+			} else {
+				color(NEGRO);
+			}
+			rectangulo_lleno(i*10+1, j*10+1, i*10+tam-1, j*10+tam-1);
+        }
+    }
+
+    refresca();
+}
+
+int cuenta_vivos(int i, int j){
+	int cont=0;
+	
+        if(tablero[i-1][j-1]){cont++;} 
+    	if(tablero[i][j-1]) {cont++;}
+    	if(tablero[i+1][j-1]) {cont++;}
+    	if(tablero[i-1][j]) {cont++;}
+    	if(tablero[i+1][j]) {cont++;}
+    	if(tablero[i-1][j+1]){cont++;}
+    	if(tablero[i][j+1]) {cont++;}
+    	if(tablero[i+1][j+1]){cont++;}
+	
+	return cont;
+}

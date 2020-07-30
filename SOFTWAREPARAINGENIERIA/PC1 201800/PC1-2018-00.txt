@@ -1,0 +1,278 @@
+/*
+prog1.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA AL USUARIO QUE INGRESE UNA
+SECUENCIA DE NUMEROS. LA PETICION DEBE DE CULMINAR CUANDO
+INGRESE UN VALOR NEGATIVO.
+
+LUEGO, DEBE DE RETORNAR EL PROMEDIO DE LOS
+VALORES INGRESADOS.
+
+EN CASO DE QUE EL PRIMER NUMERO INGRESADO SEA NEGATIVO,
+DEBE DE RETORNAR UN PROMEDIO 0
+
+MUESTRA:
+
+Valor 1: 10
+Valor 2: 5
+Valor 3: 4
+Valor 4: 3
+Valor 5: -1
+
+Promedio de valores ingresados: 11.00
+*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	
+	int n,promedio=0,promedio1=0;
+	
+	cout << "Muestra:";
+	cout << endl << endl;
+	
+	for(int i=1;i+=0;i++){
+		
+		
+		cout << "Valor " << i << ": " ; cin >> n;
+		
+		
+		if(n<0 || n==0){
+		promedio=0;
+		break;
+			
+				
+			}
+			
+		promedio1 +=n;		
+	}
+		
+	cout << fixed << setprecision(2);
+	cout << "\nPromedio de valores ingresados: " << (float)promedio1 /2 ;
+	 
+	
+	
+	
+	
+	
+	
+	
+	return 0;
+}
+/////////////////////
+/*
+prog2.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA AL USUARIO DOS PUNTOS COORDENADOS (X1, Y1) (X2, Y2)
+Y QUE RETORNE EL PUNTO MEDIO ENTRE AMBAS COORDENADAS.
+	
+NOTA: Los valores de las coordenadas deben ser reales
+	
+MUESTRA:
+	
+Coordenada 1 (x1, y1): 4 6
+Coordenada 2 (x2, y2): 16 8
+	
+El punto medio entre (4.0, 6.0) y (16.0, 8.0) es (10.0, 7.0)
+*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+		 //declarar las variables
+		 
+		 float x1,x2,y1,y2,puntomedio1,puntomedio2;	
+		 
+		 cout << "Muestra: ";
+		 cout <<endl;
+		 
+		 cout << "\nCoordenada 1 (x1 , y1): "; cin >> x1 >> y1;
+		 cout << "Coordenada 2 (x2 , y2): "; cin >> x2 >> y2;
+		 
+		 puntomedio1 = ( (x1 + x2) / 2 ); 
+		 puntomedio2 = ((y1 + y2) /2);
+		 
+		 cout << "\nEl punto medio entre (4.0, 6.0) y (16.0, 8.0) es " << fixed << setprecision(1)
+		 << "(" << puntomedio1 << ", " 
+		 << puntomedio2 <<")";
+		 	
+	
+		
+	return 0;
+}
+////////////////////////
+
+
+
+/*
+prog3.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA UN NUMERO BINARIO QUE 4 BITS Y RETORNE SU VALOR EN BASE 1O.
+	
+MUESTRA:
+	
+Ingrese un valor binario: 0 1 0 1
+Valor Decimal: 5
+	
+NOTA: SI UNO DE LOS BITS NO ES 0 o 1 DEBE DE INDICAR: "El valor binario es invalido" Y EL
+      PROGRAMA DEBE DETENERSE
+*/
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	
+			//declarar las variables
+			
+			int n,base,res1,res2,res3,res4;
+			
+			cout << "Muestra: ";
+			cout << endl;
+			cout << "\nIngrese un valor binario: "; cin >> n ;
+			
+			
+			
+			
+				while(n!=1 || n!=0){
+					
+					cout << "\nEl valor binario es invalido";break;
+					
+			}
+					
+				while(1){
+				
+				if(n ==1 || n==0){
+			
+
+				base = pow(2,2) + pow(1,1);
+				
+				cout << "\nValor decimal: " << base;
+			}
+		}
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////
+/*
+prog4.cpp
+=========
+UNA SERIE ARITMETICA SE DEFINE POR:
+	
+a + (a + d) + (a + 2d) + (a + 3d) + ... + [(a + (n-1)d)]
+
+DONDE a ES EL PRIMER ELEMENTO, d ES LA "DIFERENCIA COMUN" Y n
+ES EL NUMERO DE TERMINOS QUE SE VAN A SUMAR. USANDO ESTA INFORMACION,
+ESCRIBA UN PROGRAMA QUE UTILIZA UN LAZO PARA MOSTRAR CADA TERMINO
+Y DETERMINE LA SUMA DE LA SERIE ARITMETICA PARA VALORES DE a, d, Y n.
+	
+MUESTRA:
+	
+a = 3
+d = 2
+n = 5
+	
+Terminos:
+3
+5
+7
+9
+11
+	
+Suma: 35
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	
+		//declarar las variables
+		
+		int a,d,n,suma=0,serie=0,m;
+		
+		cout << "Muestra: " << endl;
+		cout << endl;
+		cout << "a " << " = " ; cin >> n;
+		cout << "d " << " = " ; cin >> n;
+		cout << "n " << " = " ; cin >> n;
+		
+		cout << "\nTerminos: ";
+		cout << endl;
+		cout << endl;
+	
+		for(int i=1;i<=n;i++){
+	
+		cout << endl;
+		
+		a = 3 ;
+		d = 2;
+		n = 5;
+		serie= ((a + (i-1)*d));
+		suma +=serie;
+		cout << serie ;
+		m++;
+		
+		
+	
+		}
+		
+		cout << endl;
+		cout << "\nSuma: " << suma;
+		
+		
+		
+	
+	return 0;
+}

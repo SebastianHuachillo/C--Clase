@@ -1,0 +1,232 @@
+//SOLUCION - PROBLEMA 1 - EJERCICIOS PROPUESTOS:
+//=============================================
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   string cadena, cadena1,cadena2,cadena3; //Cadenas a utilizar
+
+   int ind; //variable
+   
+   //lectura de la cadena:
+   cout<<"Ingrese el nombre de 2 paises separados por -: ";
+   getline(cin,cadena);
+   
+   //separando los nombres de la cadena principal:
+   ind = cadena.find("-",0);  //busca en que posicion esta  el guión "-"
+   cadena1 = cadena.substr(0,ind); //extrae primer nombre
+   cadena2 = cadena.substr(ind+1); //extrae segundo nombre
+   
+   //formando la cadena resultante:
+   cadena3 = cadena2 + "-" + cadena1;
+   
+   //mostrando el resultado:
+   cout<<endl<<"La cadena formada es: "<<cadena3;
+    
+	
+   return 0;
+}
+
+/////////////////////////////////////////////////////////
+//SOLUCION - PROBLEMA 2 - EJERCICIOS PROPUESTOS:
+//=============================================
+
+#include <iostream>
+
+using namespace std;
+
+string cadenaReves(string str)  //funcion
+{
+	string cad ="";  //cadena vacia
+	
+	//se recorre la cadena recibida, al reves
+	for(int i=str.length()-1;i>=0;i--)
+	{
+		cad = cad + str[i]; //se va concactenando cada caracter para forma la cadena cad
+	}
+	
+	return cad;  //se retorna la cadena formada al reves	
+}
+
+int main()
+{
+   string cadena;
+   
+   //lectura de la palabra
+   cout<<"Ingrese una palabra: ";
+   getline(cin,cadena);
+   
+   //comparando la cadena leida con su version al reves
+   if(cadena == cadenaReves(cadena))
+     cout<<"La frase es palindroma";
+   else
+     cout<<"La frase no es palindroma";
+   
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////
+
+//SOLUCION - PROBLEMA 3 - EJERCICIOS PROPUESTOS:
+//=============================================
+
+#include <iostream>
+
+
+
+using namespace std;
+
+
+
+int contarPalabras(string str)  //funcion
+
+{
+
+   int cont=0;
+	
+	
+   str = " " + str; //se agrega un espacio vacio a la cadena
+	                 
+                     //original para poder hacer la decision
+
+    
+
+
+   //detectando y contando las palabras:
+   
+    for(int i=0;i<str.length()-1;i++)
+    
+    {
+        
+       if(str[i]==' ' && str[i+1]!=' ') //si se detecta un inicio de palabra
+          
+           cont++;
+    
+    }
+
+    
+
+    return cont; 
+
+
+}
+
+
+
+int main()
+
+{
+
+
+   int cont=0;
+   
+   string frase;
+   
+   
+
+   //lectura de la frase:
+   cout<<"Ingrese una frase: ";
+   
+   getline(cin,frase);
+   
+   
+
+
+   //invocando a la funcion para mostrar el resultado pedido.
+   cout<<endl<<"La frase tiene "<<contarPalabras(frase)<<" palabras";
+      
+   
+
+   return 0;
+
+
+}
+///////////////////////////////////////////////////////////////
+
+//SOLUCION - PROBLEMA 4 - EJERCICIOS PROPUESTOS:
+//=============================================
+
+#include <iostream>
+
+
+
+using namespace std;
+
+
+
+
+
+int main()
+{
+    
+
+   //cadenas
+    
+   string cadena1,cadena2;
+    
+    
+
+   int ind;
+    
+    
+
+   //lectura de las cadenas:
+    
+   cout<<"Ingrese cadena 1: ";
+    
+   getline(cin,cadena1);
+    
+    
+
+   do{
+        
+      cout<<"Ingrese cadena 2: ";
+        
+      getline(cin,cadena2);
+        
+      if(cadena2.length()>cadena1.length()) //si el tamaño de cadena2 es mayor al tamaño de cadena1
+          
+          cout<<"\nLa longitud de la cadena2 es muy grande, ingrese nuevamente\n\n";
+    
+   }while(cadena2.length()>cadena1.length());
+   
+   
+
+
+   //proceso de busqueda y eliminacion:
+   
+   ind = cadena1.find(cadena2,0);  //busca la cadena2 en la cadena1 desde cero
+   
+
+   while(ind!=-1)  //mientras la busqueda sea exitosa
+   
+   {
+       
+      cadena1.erase(ind,cadena2.length());  //elimina cadena2 de cadena1 desde ind
+       
+       
+
+      //nueva busqueda:
+      
+      ind = cadena1.find(cadena2,ind);
+   
+
+   }
+  
+
+ 
+  //mostrando cadena1 resultante:
+   
+   cout<<endl<<"La cadena1 despues de la eliminacion es: "<<cadena1;
+   
+   
+
+   return 0;
+
+
+}
+
+/////////////////////////////////////////////////////////////////////////////

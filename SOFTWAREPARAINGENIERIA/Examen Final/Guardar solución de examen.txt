@@ -1,0 +1,272 @@
+Problema 1:
+
+#include<iostream>
+
+
+using namespace std;
+
+int main()
+{
+	int num;
+	cout<<"Ingrese la altura del triangulo: ";
+	cin>>num;
+	for(int i=1;i<=num;i++)
+	{
+		for(int j=1;j<=num;j++)
+		{
+			if(j>=1&&j<num-i+1)
+			{
+				cout<<" ";
+			}
+			else
+			{
+				cout<<"*";
+			}
+		}
+		cout<<endl;
+	
+	}
+	return 0;
+}
+///////////////////////////////////////////////////////////
+Problema 2:
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+	string cad;
+	int cont=0,cont1=0,cont2=0,cont3=0,cont4=0,cont5=0,cont6=0,cont7=0,cont8=0,cont9=0,cont10=0,cont11=0,cont12=0,cont13=0,cont14=0,cont15=0,cont16=0,cont17=0,cont18=0,cont19=0,cont20=0,cont21=0,cont22=0,cont23=0,cont24=0,cont25=0,cont26=0;
+	cout<<"Ingrese un texto: "<<endl;
+	getline(cin,cad);
+	cout<<endl<<"Estadisticas: "<<endl;
+	for(int i=0;i<=cad.length();i++)
+	{
+		if(cad[i]=='a'||cad[i]=='A')
+		{
+			cont++;				
+		}
+		else
+		{
+			if(cad[i]=='b'||cad[i]=='B')
+			{
+				cont1++;
+			
+			}
+			if(cad[i]=='c'||cad[i]=='C')
+			{
+				cont2++;
+			}
+			if(cad[i]=='d'||cad[i]=='D')
+			{
+				cont3++;
+				
+			}
+			if(cad[i]=='e'||cad[i]=='E')
+			{
+				cont4++;
+				
+			}
+			if(cad[i]=='f'||cad[i]=='F')
+			{
+				cont5++;
+				
+			}
+			if(cad[i]=='g'||cad[i]=='G')
+			{
+				cont6++;
+				
+			}
+			if(cad[i]=='h'||cad[i]=='H')
+			{
+				cont7++;
+				
+			}
+			if(cad[i]=='i'||cad[i]=='I')
+			{
+				cont8++;
+			
+			}
+			if(cad[i]=='j'||cad[i]=='J')
+			{
+				cont9++;
+			
+			}
+			if(cad[i]=='k'||cad[i]=='K')
+			{
+				cont10++;
+			
+			}
+			if(cad[i]=='l'||cad[i]=='L')
+			{
+				cont11++;
+				
+			}
+			if(cad[i]=='m'||cad[i]=='M')
+			{
+				cont12++;
+				
+			}
+			if(cad[i]=='n'||cad[i]=='N')
+			{
+				
+				cont13++;
+				
+		    }
+		    
+			if(cad[i]=='o'||cad[i]=='O')
+			{
+				cont14++;
+			}
+			if(cad[i]=='p'||cad[i]=='P')
+			{
+				cont15++;
+				
+			}
+			if(cad[i]=='q'||cad[i]=='Q')
+			{				
+				cont16++;
+				
+			}	
+			if(cad[i]=='r'||cad[i]=='R')
+			{
+				cont17++;
+				;
+			}
+			if(cad[i]=='s'||cad[i]=='S')
+			{
+				cont18++;
+				
+			}
+			if(cad[i]=='t'||cad[i]=='T')
+			{
+				cont19++;
+				
+			}	
+			if(cad[i]=='y'||cad[i]=='Y')
+			{
+				cont20++;
+				
+			}
+			if(cad[i]=='u'||cad[i]=='U')
+			{
+				cont21++;
+				
+			}	
+			if(cad[i]=='v'||cad[i]=='V')
+			{
+				cont22++;
+				
+			}	
+			if(cad[i]=='w'||cad[i]=='W')
+			{
+				cont23++;
+				
+			}
+			if(cad[i]=='x'||cad[i]=='X')
+			{
+				cont24++;
+				
+			}
+			if(cad[i]=='z'||cad[i]=='Z')
+			{
+				cont25++;
+				
+			}
+		
+	    }
+	}
+	cout<<"a: "<<cont<<"\t"<<"b: "<<cont1<<"\t"<<"c: "<<cont2<<endl<<
+	      "d: "<<cont3<<"\t"<<"e: "<<cont4<<"\t"<<"f: "<<cont5<<endl<<
+	      "g: "<<cont6<<"\t"<<"h: "<<cont7<<"\t"<<"i: "<<cont8<<endl<<
+	      "j: "<<cont9<<"\t"<<"k: "<<cont10<<"\t"<<"l: "<<cont11<<endl<<
+		  "m: "<<cont12<<"\t"<<"n: "<<cont13<<"\t"<<"o: "<<cont14<<endl<<
+		  "p: "<<cont15<<"\t"<<"q: "<<cont16<<"\t"<<"r: "<<cont17<<endl<<
+		  "s: "<<cont18<<"\t"<<"t: "<<cont19<<"\t"<<"y: "<<cont20<<endl<<
+		  "u: "<<cont21<<"\t"<<"v: "<<cont22<<"\t"<<"w: "<<cont23<<endl<<
+		  "x: "<<cont24<<"\t"<<"z: "<<cont25<<endl;
+	
+ return 0;
+}
+
+
+//////////////////////////////////////////////////////////////////
+Problema 3:
+
+#include<iostream>
+#include<string>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+string generaLetra(string);
+int main()
+{
+	int nu;
+	string cad;
+	srand(time(NULL));
+	cout<<"Ingrese el numero de caracteres: ";
+	cin>>nu;
+	cout<<endl<<"La clave es: ";
+	for(int i=1;i<=nu;i++)
+	{
+		cout<<generaLetra(cad);
+	}
+	
+ return 0;
+}
+string generaLetra(string ca)
+{
+	int x;
+	string le,le1,num;
+	x=rand()%(3-1+1)+1;
+	switch(x)
+	{
+		case 1:
+			return le=rand()%('Z'-'A'+1)+'A';			
+		case 2:
+			return le1=rand()%('z'-'a'+1)+'a';
+		case 3:
+			return num=rand()%('9'-'0'+1)+'0';		
+	}
+}
+//////////////////////////////////////////////////////////////////
+Problema 4:
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+	int x;
+	float nota,PC1,PC2,PC3,PC4,PP;
+	cout<<"Ingrese la cantidad de alumnos: ";
+	cin>>x;
+	cout<<"PC1\t"<<setw(5)<<"PC2\t"<<setw(7)<<"PC3\t"<<setw(8)<<"PC4\t"<<setw(9)<<"PP"<<endl;
+	cout<<"-----------------------------------------------------------------------"<<endl<<endl;
+	for(int i=1;i<=x;i++)
+	{
+		PC1=rand()%(20);
+		PC2=rand()%(20);
+		PC3=rand()%(20);
+		PC4=rand()%(20);
+		PP=(PC1*0.16+PC2*0.2+PC3*0.3+PC4*0.34);
+		cout<<PC1<<"\t"<<setw(4)<<PC2<<"\t"<<setw(6)<<PC3<<"\t"<<setw(7)<<PC4<<"\t"<<setw(11)<<PP;
+		if(PP>=12.5)
+		{
+			cout<<"\t"<<setw(13)<<"Aprobado"<<endl;
+		}
+		else
+		{
+			cout<<"\t"<<setw(13)<<"Desaprobado"<<endl;
+		}
+
+	}
+
+ return 0;
+}

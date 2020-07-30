@@ -1,0 +1,165 @@
+//CALCULAR EL SENO DE UN ANGULO A TRAVES DE LA SERIE DE TYLOR:
+//===========================================================
+
+#include <iostream>
+#include <cmath>
+
+#define PI  3.1416
+
+using namespace std;
+
+float convierteRadianes(float g)
+{
+	return PI*g/180.0;
+}
+
+double factorial(int n)
+{
+	double fact=1;
+	
+	for(int i=1;i<=n;i++)
+	{
+		fact = fact*i;
+	}
+	return fact;
+}
+
+double miFuncionSeno(float x, int N)
+{
+	double senx=0;  int aux=1;
+	
+	for(int i=1;i<=N*2-1;i=i+2)
+	{
+	   senx =  senx + (aux)*pow(x,i)/factorial(i);
+	   aux = -aux;		
+	}
+	
+	return senx;
+}
+
+
+int main()
+{
+   		
+   float grados, radianes;
+   
+   cout<<"Ingrese angulo en grados: ";  cin>>grados;
+   
+   radianes = convierteRadianes(grados);  //invocacion 1
+   
+   cout<<endl;
+   for(int i=1;i<=20;i++)
+   {
+   	  cout<<"sen("<<grados<<") con "<<i<<" terminos: "<<miFuncionSeno(radianes,i)<<endl;  //invocacion 2
+   	
+   }
+
+	return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//PROBLEMA ADICIONAL:
+//=================
+//EL USUARIO PODRÁ SELECCIONAR DE UN MENU DE OPCIONES SI DESEA APLICAR LO DEL PROBLEMA ANTERIOR CON SENO O COSENO
+
+#include <iostream>
+#include <cmath>
+
+#define PI 3.1416  //se ha definido un macro
+
+using namespace std;
+
+float  convierteRadianes(float g)
+{
+	return  g*PI/180.0;
+}
+
+double factorial(int n)
+{
+	double fact=1;
+	
+	for(int i=1;i<=n;i++)
+	{
+		fact = fact*i;
+	}
+	
+	return fact;
+}
+
+double  miFuncionSeno(float x, int n)
+{
+    double suma=0;
+    int aux=1;
+    
+    for(int i=1;i<=2*n-1;i=i+2)
+    {
+    	suma = suma + aux*pow(x,i)/factorial(i);
+    	aux = -aux;
+	}
+	return suma;
+}
+
+double miFuncionCoseno(float x,int n)
+{
+    double suma=0;
+    int aux=1;
+    
+    for(int i=0;i<=(n-1)*2;i=i+2)
+    {
+    	suma = suma + aux*pow(x,i)/factorial(i);
+    	aux = -aux;
+	}
+	return suma;		
+}
+
+void imprimeMenu()
+{
+	cout<<"MENU"<<endl;
+	cout<<"===="<<endl;
+	cout<<"[1] seno"<<endl;
+	cout<<"[2] coseno"<<endl<<endl;
+}
+
+int main()
+{
+
+   int op;  float angulo;
+	
+   imprimeMenu();  //invocación 1
+
+   do{ 
+      cout<<"Ingrese la opcion: "; 
+      cin>>op;
+      if(op<1|| op>2)
+	    cout<<"Error, ingrese nuevamente\n\n";
+   }while(op<1|| op>2);
+	
+   switch(op)
+   {
+       case 1:
+	      cout<<endl<<"Ingrese el numero de grados: "; cin>>angulo;
+	      cout<<endl;
+	      for(int i=1;i<=20;i++)
+	      {
+	        cout<<"sen("<<angulo<<") con "<<i<<" terminos es: ";
+	        cout<<miFuncionSeno(convierteRadianes(angulo),i)<<endl;  //invocacion 2
+	      }	      
+       break;
+       case 2:
+	      cout<<endl<<"Ingrese el numero de grados: "; cin>>angulo;
+	      cout<<endl;
+	      for(int i=1;i<=20;i++)
+	      {
+	         cout<<"cos("<<angulo<<") con "<<i<<" terminos es: ";
+	         cout<<miFuncionCoseno(convierteRadianes(angulo),i)<<endl;  //invocacion 3
+          }
+	  
+       break;		
+   }	
+			
+   return 0;
+}
+
+
+

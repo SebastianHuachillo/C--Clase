@@ -1,0 +1,274 @@
+    //MIS PRIMEROS PROGRAMAS EN MINIWIN 
+                                                          //=================================
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 1:
+//==========
+//programa que visualiza las dimensiones en pixeles de la ventana por defecto de miniwin
+
+#include "miniwin.h"
+
+using namespace miniwin;
+using namespace std;  //agregar en caso no se reconozca la función to_string()
+
+int main()
+{
+	int ancho, alto;
+	
+	ancho = vancho();  //se obtiene la cantidad de pixeles 
+	                   //que tiene el ancho de la ventana
+	                   
+	alto = valto();    //se obtiene la cantidad de pixeles 
+	                  //que tiene el alto de la ventana
+	                
+	//vizualizando en la pantalla los datos capturados:
+	texto(0,0,to_string(ancho) + "," + to_string(alto));
+		                   
+	refresca();  //refresca el contenido de la ventana para que se muestren los datos
+	
+	return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+//Programa 2:
+//==========
+//programa que redimensiona al doble el tamaño de la ventana por defecto de miniwin
+
+#include "miniwin.h"
+
+using namespace miniwin;
+
+int main()
+{
+	int ancho, alto;
+	
+	ancho = vancho();  //se obtiene la cantidad de pixeles 
+	                   //que tiene el ancho de la ventana
+	                   
+	alto = valto();    //se obtiene la cantidad de pixeles 
+	                  //que tiene el alto de la ventana
+	                
+	//redimensionando al doble de su tamaño anterior la ventana:
+	vredimensiona(2*ancho,2*alto);
+	
+	return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+//Programa 3:
+//==========
+//mostrar en pantalla datos numericos uno debajo de otro
+
+#include "miniwin.h"
+
+using namespace miniwin;
+using namespace std;         //agregar en caso no se reconozca la función to_string()
+
+int main()
+{
+    int var,y=0;
+	
+    for(var=10;var<=100;var+=10)
+    {
+	   texto(0,y,to_string(var));  //imprime cada dato 
+	   y+=20;  //cambia la coordenada de y 
+    }
+
+    refresca();  //refresca el contenido de la ventana para que se muestren los datos
+		               	
+    return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 4:
+//==========
+//mostrar en pantalla datos numericos uno debajo de otro, pero con un retardo de tiempo de 1 segundo
+
+#include "miniwin.h"
+
+using namespace miniwin;
+using namespace std;         //agregar en caso no se reconozca la función to_string()
+
+int main()
+{
+    int var,y=0;
+	
+    for(var=10;var<=100;var+=10)
+    {
+	   texto(0,y,to_string(var));  //imprime cada dato 
+	   y+=20;  //cambia la coordenada de y 
+           espera(1000);  //espera 1 segundo (1000 mseg.) antes de seguir ejecutando
+           refresca();  //refresca el contenido de la ventana para que se muestre cada dato antes de que venga el segundo
+    }
+	               	
+    return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 5:
+//==========
+//colocando color a las impresiones de texto:
+
+#include "miniwin.h"
+
+using namespace miniwin;
+
+int main()
+{
+    color(5); //se configura el color magenta (5)
+    texto(0,0,"impresion con color magenta");
+    
+    color(6); //se configura el color cyan (6)
+    texto(0,20,"impresion con color cyan"); 
+    
+    color(4); //se configura el color amarillo (4)
+    texto(0,40,"impresion con color amarillo"); 
+        
+    refresca();  //refresca el contenido de la ventana
+     		  
+    return 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 6:
+//==========
+//dibujando figuras básicas en la pantalla:
+
+#include "miniwin.h"
+
+using namespace miniwin;
+
+int main()
+{
+    //dibujando un pixel de color amarillo (punto)
+    color(4); 
+    punto(20,150);  //se dibuja un punto en la pantalla en la coordenada (20,150)
+
+    //dibujando una linea de color cyan:
+    color(6);
+    linea(0,0,400,300);  //se dibuja una linea uniendo los puntos p1: (0,0) y p2: (400,300)
+       
+    //dibujando un rectangulo de color verde:
+    color(2);
+    rectangulo(0,0,100,100);  //se dibuja un rectangulo con vértice superior izquierdo p1: (0,0)
+                              //y vertice inferior derecho  p2: (100, 100)
+    
+    //dibujando un rectangulo relleno de color azul:
+    color(3);
+    rectangulo_lleno(100,0,200,100); //se dibuja un rectangulo relleno con vértice superior izquierdo p1: (100,0)
+                                     //y vertice inferior derecho  p2: (200, 100)
+     
+    //dibujando un circulo de color magenta:
+    color(5);
+    circulo(200,150,20);  //se dibuja un circulo de centro p: (200,150) y radio de 20 pixeles
+     
+    //dibujando un circulo relleno de color amarillo: 
+    color(4);
+    circulo_lleno(200,150,20);  //se dibuja un circulo relleno de centro p: (200,150) y radio de 20 pixeles
+    
+    refresca(); //refresca el contenido de la ventana
+
+    return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 7:
+//==========
+//se pueden configurar mas colores utilizando el formato RGB  (es decir, combinando los colores rojo, verde y azul)
+
+#include "miniwin.h"
+
+using namespace miniwin;
+
+int main()
+{
+    //dibujando un rectangulo relleno de color gris:
+    color_rgb(128,128,128);  //se combina 128 de rojo con 128 de verde y con 128 de azul para formar gris
+    rectangulo_lleno(100,0,200,100);
+        
+    refresca(); //refresca el contenido de la ventana
+			
+    return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 8:
+//==========
+//dibujando un tablero de ajedrez
+
+#include "miniwin.h"
+
+using namespace miniwin;
+
+int main()
+{
+    vredimensiona(800,800);  //se redimensiona la ventana a 800x800 pixeles
+    
+    //cada cuadrado del tablero tendrá dimension 100x100 pixeles
+     
+    int aux=1;   
+   
+    //usaremos lógica de repeticion para el dibujo del tablero
+   
+    for(int y=0;y<=700;y+=100)
+	{  
+      //dibuja los cuadrados de una linea del tablero  
+   	  for(int x=0;x<=700;x+=100)
+   	  {
+   	  	//depende del valor de aux para imprimir cuadrado blanco o negro
+   	  	if(aux==1)
+   	     color(7);
+   	    else
+   	     color(0);
+   	    rectangulo_lleno(x,y,x+100,y+100); //dibuja un cuadrado 	    
+   	    aux=-aux;  //actualiza el aux para el color del siguiente cuadrado	    
+   	  }   	   	    
+   	  aux=-aux;  //actualiza el aux para configurar los colores de la siguiente linea de cuadrados
+   }
+  
+   refresca();  //refresca el contenido de la ventana
+  
+   return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Programa 9:
+//==========
+////dibujando un tablero de ajedrez con animacion
+
+#include "miniwin.h"
+#include <ctime>
+#include <cstdlib>
+
+using namespace miniwin;
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	
+	int c;
+	
+    vredimensiona(800,800);
+    int aux=1;
+    
+    while(1)
+    {
+    
+      c =rand()%(7);	
+    
+      for(int y=0; y<=700; y+=100)
+      {
+        for(int x=0; x<=700; x+=100)
+        {
+    	  if(aux==1)
+    	   color(7);
+    	  else
+    	   color(c);
+    	  rectangulo_lleno(x,y,x+100,y+100);
+    	  aux=-aux;
+	    }
+	    aux=-aux;
+      }
+      refresca();
+      espera(1000);
+    }
+      
+    refresca();
+	
+	return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////

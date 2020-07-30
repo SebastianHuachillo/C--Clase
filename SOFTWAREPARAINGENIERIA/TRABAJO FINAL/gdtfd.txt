@@ -1,0 +1,57 @@
+#include "miniwin.h"
+using namespace miniwin;
+
+const int tam=10;
+const int m=50;
+const int n=50; 
+const int ANCHO=m*tam;
+const int ALTO=n*tam+40;
+
+int tablero[n][m];
+
+void muestraTablero();
+
+int main(){
+	vredimensiona(ANCHO, ALTO);
+
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			tablero[i][j]=false;
+		}
+		
+	}
+	tablero[20][10]=true;
+	muestraTablero();
+
+	/*
+	for(int i=0, j=ALTO-40; i<ANCHO, j>=0; i+=tam, j-=tam){
+		tablero[i][j]=true;
+		if(tablero[i][j]){
+			rectangulo_lleno(i, j, i+tam, j-tam);
+		}
+	}
+	*/
+	for(int i=0; i<ALTO-40; i+=tam){
+		for(int j=0; j<ANCHO; j+=tam){
+			tablero[i][j]=true;
+			if(tablero[i][j]){
+				rectangulo_lleno(j, i, j+tam, i+tam);
+			}
+		}
+		
+	}
+	
+	refresca();
+	return 0;
+}
+
+void muestraTablero(){
+	for(int x=tam; x<ANCHO; x+=tam){
+		linea(x, 0, x, ALTO-40);
+	}
+	for(int y=tam; y<=ALTO-40; y+=tam){
+		linea(0, y, ANCHO, y);
+	}
+	texto(100 ,ALTO-20, "HOLI");
+	refresca();
+}

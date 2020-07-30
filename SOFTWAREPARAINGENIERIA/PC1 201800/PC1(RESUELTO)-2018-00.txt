@@ -1,0 +1,184 @@
+/*
+prog1.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA AL USUARIO QUE INGRESE UNA
+SECUENCIA DE NUMEROS. LA PETICION DEBE DE CULMINAR CUANDO
+INGRESE UN VALOR NEGATIVO.
+
+LUEGO, DEBE DE RETORNAR EL PROMEDIO DE LOS
+VALORES INGRESADOS.
+
+EN CASO DE QUE EL PRIMER NUMERO INGRESADO SEA NEGATIVO,
+DEBE DE RETORNAR UN PROMEDIO 0
+
+MUESTRA:
+
+Valor 1: 10
+Valor 2: 5
+Valor 3: 4
+Valor 4: 3
+Valor 5: -1
+
+Promedio de valores ingresados: 11.00
+*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	int n = 0;
+	double num = 0, suma = 0;
+	
+	// Se define un lazo while que pide valores mientras el valor ingresado
+	// no sea negativo
+	while (num >= 0) {
+		cout << "Valor " << n + 1 << ": "; cin >> num;
+		// Si el valor ingresado es positivo se incluye en la suma (suma) ni en la cuenta
+		// de la cantidad de valores ingresados (n)
+		if (num >= 0) {
+			suma += num;
+			n++;
+		}
+	}
+	// Se obtiene el promedio de los valores ingresados
+	cout << "\nPromedio de valores ingresados: " << fixed << setprecision(2) << suma / n << endl;
+	
+	return 0;
+}
+
+//===========================================================================================================
+/*
+prog2.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA AL USUARIO DOS PUNTOS COORDENADOS (X1, Y1) (X2, Y2)
+Y QUE RETORNE EL PUNTO MEDIO ENTRE AMBAS COORDENADAS.
+	
+NOTA: Los valores de las coordenadas deben ser reales
+	
+MUESTRA:
+	
+Coordenada 1 (x1, y1): 4 6
+Coordenada 2 (x2, y2): 16 8
+	
+El punto medio entre (4.0, 6.0) y (16.0, 8.0) es (10.0, 7.0)
+*/
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	double x1, y1, x2, y2, xm, ym;
+	
+	// Se piden los valores de las coordenadas
+	cout << "Coordenada 1 (x1, y1): "; cin >> x1 >> y1;
+	cout << "Coordenada 2 (x2, y2): "; cin >> x2 >> y2;
+	
+	// Se asigna el formato de visualizacion de los resultados
+	cout << fixed << setprecision(1);
+	
+	// Se muestran los resultados
+	cout << "El punto medio entre (" << x1 << ", " << y1 << ") "
+		 << "y (" << x2 << ", " << y2 << ") es (" << (x1+x2)/2 
+		 << ", " << (y1+y2)/2 << ")" << endl;
+		 	
+	return 0;
+}
+
+//=====================================================================================================
+/*
+prog3.cpp
+=========
+ESCRIBA UN PROGRAMA QUE PIDA UN NUMERO BINARIO QUE 4 BITS Y RETORNE SU VALOR EN BASE 1O.
+	
+MUESTRA:
+	
+Ingrese un valor binario: 0 1 0 1
+Valor Decimal: 5
+	
+NOTA: SI UNO DE LOS BITS NO ES 0 o 1 DEBE DE INDICAR: "El valor binario es invalido"
+*/
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	int b3, b2, b1, b0;
+	
+	// Se piden los datos al usuario
+	cout << "Ingrese un valor binario: "; cin >> b3 >> b2 >> b1 >> b0;
+	
+	// Si algun bit es invalido, se indica el error...
+	if ((b3 < 0 || b3 > 1) || (b2 < 0 || b2 > 1) || (b1 < 0 || b1 > 1) || (b0 < 0 || b0 > 1)) {
+		cout << "El valor binario es invalido" << endl;
+	} else {
+		// ...de lo contrario se halla el valor base 10 utilizando serie de potencias.
+		cout << "Valor Decimal: " << b3 * pow(2, 3) + b2 * pow(2, 2) + b1 * pow(2, 1) + b0 * pow(2, 0) << endl;	
+	}
+	
+	
+	
+	return 0;
+}
+
+//============================================================================================================================
+/*
+prog4.cpp
+=========
+UNA SERIE ARITMETICA SE DEFINE POR:
+	
+a + (a + d) + (a + 2d) + (a + 3d) + ... + [(a + (n-1)d)]
+
+DONDE a ES EL PRIMER ELEMENTO, d ES LA "DIFERENCIA COMUN" Y n
+ES EL NUMERO DE TERMINOS QUE SE VAN A SUMAR. USANDO ESTA INFORMACION,
+ESCRIBA UN PROGRAMA QUE UTILIZE UN LAZO PARA MOSTRAR CADA TERMINO
+Y DETERMINE LA SUMA DE LA SERIE ARITMETICA PARA VALORES DE a, d, Y n.
+	
+MUESTRA:
+	
+a = 3
+d = 2
+n = 5
+	
+Terminos:
+3
+5
+7
+9
+11
+	
+Suma: 35
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	int a, d, n, term, suma = 0;
+	
+	// Se piden los valores al usuario
+	cout << "a: "; cin >> a;
+	cout << "d: "; cin >> d;
+	cout << "n: "; cin >> n;
+	
+	// Se muestran los n terminos generados y se va hallando la suma
+	cout << "\nTerminos:" << endl;
+	for (; n > 0; n--) {
+		term = a + (n - 1) * d;
+		cout << term << endl;
+		suma += term;
+	}
+	
+	// Se imprime la suma resultante
+	cout << "\nSuma: " << suma << endl;
+	
+	return 0;
+}
